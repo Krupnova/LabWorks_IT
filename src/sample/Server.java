@@ -35,7 +35,7 @@ import org.w3c.dom.NodeList;
 
 public class Server extends UnicastRemoteObject implements RMI {
 
-    File f1 = new File("dom.xml");
+    File f1 = new File("src/dom.xml");
     private static final long serialVersionUID = 1L;
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public static ArrayList<Library> al = new ArrayList<Library>();
@@ -50,9 +50,9 @@ public class Server extends UnicastRemoteObject implements RMI {
     public void AddBook(Library lib) throws RemoteException {
         al.add(lib);
         System.out.println(al);
-        f1.delete();
-        File f1 = new File("dom.xml");
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        //f1.delete();
+        //File f1 = new File("dom.xml");
+        //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         try {
 
@@ -300,24 +300,22 @@ public class Server extends UnicastRemoteObject implements RMI {
     }
 
 
+    // How about make registration to a new thread?
+
+
 
     public Boolean register(Client2 client) throws RemoteException {
         clients.add(client);
-
         return true;
     }
 
     public void unregister(Client2 client) throws RemoteException {
-
         clients.remove(client);
-
-
     }
 
     public void registerAll() throws RemoteException {
         for (Client2 client : clients) {
             client.update();
-
         }
     }
 
