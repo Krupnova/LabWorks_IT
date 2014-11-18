@@ -2,6 +2,7 @@ package sessions;
 
 import main.LibraryNode;
 import main.LibraryNodeTags;
+import main.Server;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.Attributes;
@@ -32,6 +33,8 @@ public class DatabaseSession implements Runnable {
     private RequestHandler requestHandler;
     // Переменная, управляющая телом потока
     private boolean isStopped = false;
+    // Объект, хранящий ссылку на сервер
+    //private final Server
 
     // Конструктор
     public DatabaseSession(LinkedList<LibraryNode> database, String DATABASE_PATH, RequestHandler requestHandler) {

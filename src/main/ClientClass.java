@@ -20,6 +20,10 @@ public class ClientClass extends UnicastRemoteObject implements ClientInterface 
     private RMI_Interface server;
     public final static ObservableList<LibraryNode> data = FXCollections.observableArrayList();
 
+    public ObservableList<LibraryNode> getData() {
+        return data;
+    }
+
     // #debug
     private static final String [] DATABASES = {
             "src/databases/DATABASE1.xml",

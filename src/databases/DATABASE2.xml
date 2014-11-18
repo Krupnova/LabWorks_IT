@@ -12,4 +12,10 @@
     <author>asdasd</author>
     <date>12</date>
   </book>
+  <book id="2">
+    <numOfBook>12</numOfBook>
+    <name>asdad</name>
+    <author>dada</author>
+    <date>11</date>
+  </book>
 </library>

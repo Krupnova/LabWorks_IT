@@ -18,4 +18,16 @@
     <author>tst</author>
     <date>12</date>
   </book>
+  <book id="3">
+    <numOfBook>12</numOfBook>
+    <name>asdasd</name>
+    <author>adada</author>
+    <date>21</date>
+  </book>
+  <book id="4">
+    <numOfBook>313131</numOfBook>
+    <name>asdadad</name>
+    <author>adadada</author>
+    <date>313131</date>
+  </book>
 </library>
