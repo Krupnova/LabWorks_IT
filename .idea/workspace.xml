@@ -2,19 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/databases/DATABASE1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/RMI_Interface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/Server.java" />
-      <change type="DELETED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\sample\RMI.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\sample\Server.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\sample\Starter.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\sample\dom.xml" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\sample\Client.java" afterPath="$PROJECT_DIR$/src/main/ClientClass.java" />
-      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\sample\Client2.java" afterPath="$PROJECT_DIR$/src/main/ClientInterface.java" />
-      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\sample\Client3.java" afterPath="$PROJECT_DIR$/src/main/ClientGUI.java" />
-      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\sample\Library.java" afterPath="$PROJECT_DIR$/src/main/LibraryNode.java" />
-      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\sample\TAGS.java" afterPath="$PROJECT_DIR$/src/main/LibraryNodeTags.java" />
-      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\sample\sample.fxml" afterPath="$PROJECT_DIR$/src/main/sample.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -93,8 +80,8 @@
       <file leaf-file-name="ClientGUI.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/ClientGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.272" vertical-offset="357" max-vertical-offset="8636">
-              <caret line="63" column="52" selection-start-line="63" selection-start-column="52" selection-end-line="63" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.2176" vertical-offset="357" max-vertical-offset="8636">
+              <caret line="61" column="60" selection-start-line="61" selection-start-column="60" selection-end-line="61" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -629,7 +616,11 @@
       <created>1415996938040</created>
       <updated>1415996938040</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Initial commit V3">
+      <created>1416328091926</created>
+      <updated>1416328091926</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1050,6 +1041,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0544" vertical-offset="0" max-vertical-offset="625">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1150,8 +1142,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ClientGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.272" vertical-offset="357" max-vertical-offset="8636">
-          <caret line="63" column="52" selection-start-line="63" selection-start-column="52" selection-end-line="63" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.2176" vertical-offset="357" max-vertical-offset="8636">
+          <caret line="61" column="60" selection-start-line="61" selection-start-column="60" selection-end-line="61" selection-end-column="60" />
           <folding />
         </state>
       </provider>
