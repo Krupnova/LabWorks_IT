@@ -1,10 +1,9 @@
-package sample;
+package main;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -17,8 +16,6 @@ import javafx.application.Application;
 
 import static javafx.application.Application.launch;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,23 +31,21 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import sample.Library;
 
-public class Client3 extends Application {
+import main.SearchMode;
+
+public class ClientGUI extends Application {
 
     private static int count = 0;
-    private ArrayList<Library> lib = new ArrayList<Library>();
-    private Client client;
+    private ArrayList<LibraryNode> lib = new ArrayList<LibraryNode>();
+    private ClientClass client;
 
     private void init(final Stage primaryStage) throws RemoteException, NotBoundException {
 
         System.out.println("Starting...");
 
-        client = new Client();
+        client = new ClientClass();
         client.lib(client);
-
-
-        client.ReadXL();
 
         final List data1 = client.Print();
         final Group root = new Group();
@@ -144,7 +139,7 @@ public class Client3 extends Application {
                         String name1 = nameText.getText();
                         String author1 = authorText.getText();
                         int i = 0;
-                        Library book = new Library(i, Long.parseLong(number1), name1, Long.parseLong(date1), author1);
+                        LibraryNode book = new LibraryNode(i, Long.parseLong(number1), name1, Long.parseLong(date1), author1);
                         i++;
                         client.AddBook(book);
                         System.out.println(number1 + ' ' + date1 + ' ' + name1 + ' ' + author1);
@@ -198,17 +193,17 @@ public class Client3 extends Application {
 
                 Number_s.setOnAction(new EventHandler<ActionEvent>() {
                     public void handle(ActionEvent event) {
-                        count = 1;
+                        count = 0;
                         String field = text.getText();
-                        ArrayList<Library> lib = new ArrayList<Library>();
+                        LinkedList<LibraryNode> lib = new LinkedList<LibraryNode>();
                         try {
-                            lib = client.Searching(field, count);
+                            lib = client.Searching(field, SearchMode.BY_NUMBER);
                         } catch (RemoteException ex) {
-                            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(ClientClass.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         System.out.println(lib);
                         if (lib != null) {
-                            ObservableList<Library> data = FXCollections.observableArrayList(lib);
+                            ObservableList<LibraryNode> data = FXCollections.observableArrayList(lib);
 
                             TableColumn numberCol = new TableColumn();
                             numberCol.setText("Номер");
@@ -235,23 +230,20 @@ public class Client3 extends Application {
                             root.getChildren().add(tableView);
                             lib = null;
                         }
-
                     }
                 });
                 Name_s.setOnAction(new EventHandler<ActionEvent>() {
                     public void handle(ActionEvent event) {
-
-                        count = 2;
+                        count = 1;
                         String field = text.getText();
-                        ArrayList<Library> lib = new ArrayList<Library>();
-
+                        LinkedList<LibraryNode> lib = new LinkedList<LibraryNode>();
                         try {
-                            lib = client.Searching(field, count);
+                            lib = client.Searching(field, SearchMode.BY_NAME);
                         } catch (RemoteException ex) {
-                            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(ClientClass.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         if (lib != null) {
-                            final ObservableList<Library> data = FXCollections.observableArrayList(lib);
+                            final ObservableList<LibraryNode> data = FXCollections.observableArrayList(lib);
                             TableColumn numberCol = new TableColumn();
                             numberCol.setText("Номер");
                             numberCol.setMinWidth(104);
@@ -280,18 +272,17 @@ public class Client3 extends Application {
 
                     }
                 });
-
                 Date_s.setOnAction(new EventHandler<ActionEvent>() {
 
                     public void handle(ActionEvent event) {
                         try {
-                            count = 3;
+                            count = 2;
                             String field = text.getText();
-                            ArrayList<Library> lib = new ArrayList<Library>();
+                            LinkedList<LibraryNode> lib = new LinkedList<LibraryNode>();
 
-                            lib = client.Searching(field, count);
+                            lib = client.Searching(field, SearchMode.BY_DATE);
                             if (lib != null) {
-                                final ObservableList<Library> data = FXCollections.observableArrayList(lib);
+                                final ObservableList<LibraryNode> data = FXCollections.observableArrayList(lib);
                                 TableColumn numberCol = new TableColumn();
                                 numberCol.setText("Номер");
                                 numberCol.setMinWidth(104);
@@ -318,7 +309,7 @@ public class Client3 extends Application {
                             }
 
                         } catch (RemoteException ex) {
-                            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(ClientClass.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
                     }
@@ -326,13 +317,13 @@ public class Client3 extends Application {
                 Author_s.setOnAction(new EventHandler<ActionEvent>() {
                     public void handle(ActionEvent event) {
                         try {
-                            count = 4;
+                            count = 3;
                             String field = text.getText();
-                            ArrayList<Library> lib = new ArrayList<Library>();
+                            LinkedList<LibraryNode> lib = new LinkedList<LibraryNode>();
 
-                            lib = client.Searching(field, count);
+                            lib = client.Searching(field, SearchMode.BY_AUTHOR);
                             if (lib != null) {
-                                final ObservableList<Library> data = FXCollections.observableArrayList(lib);
+                                final ObservableList<LibraryNode> data = FXCollections.observableArrayList(lib);
                                 TableColumn numberCol = new TableColumn();
                                 numberCol.setText("Номер");
                                 numberCol.setMinWidth(104);
@@ -359,14 +350,14 @@ public class Client3 extends Application {
                             }
 
                         } catch (RemoteException ex) {
-                            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(ClientClass.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
                 });
 
             }
         });
-
+// delete
         Removing.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 javafx.scene.shape.Rectangle rect = new javafx.scene.shape.Rectangle(500, 400);
@@ -377,7 +368,7 @@ public class Client3 extends Application {
 
                 root.getChildren().addAll(rect);
 
-                Label label = new Label("Введите номер удаляемого элемента");
+                Label label = new Label("Введите ID удаляемого элемента");
                 label.setLayoutX(100);
                 label.setLayoutY(50);
                 root.getChildren().add(label);
@@ -426,7 +417,7 @@ public class Client3 extends Application {
                                 root.getChildren().add(labe2);
                             }
                         } catch (RemoteException ex) {
-                            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(ClientClass.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         try {
                             client.regAll();

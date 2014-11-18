@@ -1,26 +1,27 @@
-package sample;
+package main;
 
 
 import java.io.Serializable;
 
-public class Library implements Serializable {
+public class LibraryNode implements Serializable {
 
-    int id;
-    private long number;
-    private String name;
-    private long date;
-    private String author;
+    private int id;
+    private long number, date;
+    private String name, author;
 
-    public Library(int id) {
-        this.id = id;
+    public LibraryNode() {
     }
 
-    public Library(int id, long number, String name, long date, String author) {
+    public LibraryNode(int id, long number, String name, long date, String author) {
         this.id = id;
         this.number = number;
         this.name = name;
         this.date = date;
         this.author = author;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {

@@ -1,5 +1,5 @@
-package sample;
-public interface TAGS {
+package main;
+public interface LibraryNodeTags {
 
     public static final String ID_TAG = "id";
     public static final String BOOK_TAG = "book";
