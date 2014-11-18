@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<library>
+  <book id="0">
+    <numOfBook>13</numOfBook>
+    <name>test</name>
+    <author>test</author>
+    <date>12</date>
+  </book>
+  <book id="1">
+    <numOfBook>12</numOfBook>
+    <name>asda</name>
+    <author>asdasd</author>
+    <date>12</date>
+  </book>
+</library>
