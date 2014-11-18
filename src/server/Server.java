@@ -1,5 +1,7 @@
-package main;
+package server;
 
+import client.ClientInterface;
+import node.LibraryNode;
 import sessions.DatabaseSession;
 import sessions.RequestHandler;
 import sessions.RequestType;
@@ -180,10 +182,10 @@ public class Server extends UnicastRemoteObject implements RMI_Interface {
         }
     }
 
-    // Непонятная процедура, пока что закомменчена
-    /*public void DeleteKol() throws RemoteException {
-        tmpStorage = new LinkedList<LibraryNode>();
-    }*/
+    @Override
+    public String[] getDatabaseList() throws RemoteException {
+        return this.DATABASES;
+    }
 
     public static void main(String args[]) throws RemoteException, MalformedURLException {
         try {

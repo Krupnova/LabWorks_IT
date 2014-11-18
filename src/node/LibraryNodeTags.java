@@ -1,4 +1,4 @@
-package main;
+package node;
 public interface LibraryNodeTags {
 
     public static final String ID_TAG = "id";

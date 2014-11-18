@@ -1,15 +1,12 @@
 package sessions;
 
-import main.LibraryNode;
-import main.LibraryNodeTags;
-import main.Server;
+import node.LibraryNode;
+import node.LibraryNodeTags;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import sessions.Request;
-import sessions.RequestHandler;
 
 import javax.xml.parsers.*;
 import javax.xml.transform.OutputKeys;

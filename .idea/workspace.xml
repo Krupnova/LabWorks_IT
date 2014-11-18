@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/ClientClass.java" afterPath="$PROJECT_DIR$/src/main/ClientClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/ClientGUI.java" afterPath="$PROJECT_DIR$/src/main/ClientGUI.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/client/ClientGUI.java" />
+      <change type="DELETED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\main\ClientGUI.java" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\main\ClientClass.java" afterPath="$PROJECT_DIR$/src/client/ClientClass.java" />
+      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\main\ClientInterface.java" afterPath="$PROJECT_DIR$/src/client/ClientInterface.java" />
+      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\main\LibraryNode.java" afterPath="$PROJECT_DIR$/src/node/LibraryNode.java" />
+      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\main\LibraryNodeTags.java" afterPath="$PROJECT_DIR$/src/node/LibraryNodeTags.java" />
+      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\main\RMI_Interface.java" afterPath="$PROJECT_DIR$/src/server/RMI_Interface.java" />
+      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\main\SearchMode.java" afterPath="$PROJECT_DIR$/src/server/SearchMode.java" />
+      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\main\Server.java" afterPath="$PROJECT_DIR$/src/server/Server.java" />
+      <change type="MOVED" beforePath="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\main\sample.fxml" afterPath="$PROJECT_DIR$/src/client/sample.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/databases/DATABASE1.xml" afterPath="$PROJECT_DIR$/src/databases/DATABASE1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/databases/DATABASE2.xml" afterPath="$PROJECT_DIR$/src/databases/DATABASE2.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sessions/DatabaseSession.java" afterPath="$PROJECT_DIR$/src/sessions/DatabaseSession.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sessions/Request.java" afterPath="$PROJECT_DIR$/src/sessions/Request.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sessions/RequestHandler.java" afterPath="$PROJECT_DIR$/src/sessions/RequestHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -59,8 +68,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
+    <breakpoint_rules converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -69,131 +78,37 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="ClientClass.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/ClientClass.java">
+        <entry file="file://$PROJECT_DIR$/src/client/ClientClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
-              <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
-              <folding>
-                <element signature="e#722#723#0" expanded="true" />
-                <element signature="e#749#750#0" expanded="true" />
-                <element signature="method#Print#0;class#ClientClass#0" expanded="false" />
-                <element signature="method#AddBook#0;class#ClientClass#0" expanded="false" />
-                <element signature="method#update#0;class#ClientClass#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="1954" max-vertical-offset="2465">
+              <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ClientGUI.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/ClientGUI.java">
+        <entry file="file://$PROJECT_DIR$/src/client/ClientGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5968" vertical-offset="515" max-vertical-offset="9384">
-              <caret line="209" column="24" selection-start-line="209" selection-start-column="24" selection-end-line="209" selection-end-column="24" />
-              <folding>
-                <element signature="method#createTextField#0;class#ClientGUI#0" expanded="false" />
-                <element signature="method#createFields#0;class#ClientGUI#0" expanded="false" />
-                <element signature="e#3609#3620#0" expanded="true" />
-                <element signature="method#createButton#0;class#ClientGUI#0" expanded="false" />
-                <element signature="method#printDatabase#0;class#ClientGUI#0" expanded="false" />
-                <element signature="e#8679#11014#0" expanded="true" />
-                <element signature="e#9917#10862#0" expanded="true" />
-                <element signature="e#10843#10844#0" expanded="true" />
-                <element signature="e#11003#11004#0" expanded="true" />
-                <element signature="e#11061#22117#0" expanded="true" />
-                <element signature="e#12456#14812#0" expanded="true" />
-                <element signature="e#12708#12721#0" expanded="true" />
-                <element signature="e#14793#14794#0" expanded="true" />
-                <element signature="e#14850#17161#0" expanded="true" />
-                <element signature="e#15102#15115#0" expanded="true" />
-                <element signature="e#17142#17143#0" expanded="true" />
-                <element signature="e#17199#19585#0" expanded="true" />
-                <element signature="e#17494#17507#0" expanded="true" />
-                <element signature="e#19566#19567#0" expanded="true" />
-                <element signature="e#19625#22011#0" expanded="true" />
-                <element signature="e#19919#19932#0" expanded="true" />
-                <element signature="e#21992#21993#0" expanded="true" />
-                <element signature="e#22106#22107#0" expanded="true" />
-                <element signature="e#22159#25406#0" expanded="true" />
-                <element signature="e#23180#25297#0" expanded="true" />
-                <element signature="e#25277#25278#0" expanded="true" />
-                <element signature="e#25392#25393#0" expanded="true" />
-                <element signature="e#25445#27871#0" expanded="true" />
-                <element signature="e#27190#27554#0" expanded="true" />
-                <element signature="e#27535#27536#0" expanded="true" />
-                <element signature="e#27860#27861#0" expanded="true" />
-                <element signature="e#27907#28268#0" expanded="true" />
-                <element signature="e#28257#28258#0" expanded="true" />
-                <element signature="e#28993#28994#0" expanded="true" />
-                <element signature="e#29021#29022#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LibraryNode.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/LibraryNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
-              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+            <state vertical-scroll-proportion="10.7712" vertical-offset="3043" max-vertical-offset="10064">
+              <caret line="617" column="8" selection-start-line="617" selection-start-column="8" selection-end-line="617" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchMode.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/SearchMode.java">
+      <file leaf-file-name="ClientDatabaseChoosing.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/ClientDatabaseChoosing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
-              <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseSession.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sessions/DatabaseSession.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2" max-vertical-offset="1751">
-              <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="1768">
+              <caret line="85" column="33" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
               <folding>
-                <element signature="method#deleteNode#0;class#DatabaseSession#0" expanded="false" />
-                <element signature="method#SAXReader#0;class#DatabaseSession#0" expanded="false" />
-                <element signature="class#2419:4116" expanded="false" />
-                <element signature="method#startElement#0;class#2419:4116" expanded="false" />
-                <element signature="method#endElement#0;class#2419:4116" expanded="false" />
-                <element signature="method#characters#0;class#2419:4116" expanded="false" />
-                <element signature="method#DOMWriter#0;class#DatabaseSession#0" expanded="false" />
-                <element signature="e#6666#6704#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#ClientDatabaseChoosing#0;class#ClientDatabaseChoosing#0" expanded="false" />
+                <element signature="method#createComboBox#0;class#ClientDatabaseChoosing#0" expanded="false" />
+                <element signature="e#1435#1443#0" expanded="true" />
+                <element signature="method#getDatabaseName#0;class#ClientDatabaseChoosing#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Server.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/Server.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="446" max-vertical-offset="1071">
-              <caret line="173" column="73" selection-start-line="173" selection-start-column="73" selection-end-line="173" selection-end-column="73" />
-              <folding>
-                <element signature="method#AddBook#0;class#Server#0" expanded="false" />
-                <element signature="method#DelBook#0;class#Server#0" expanded="false" />
-                <element signature="method#Searching#0;class#Server#0" expanded="false" />
-                <element signature="method#Print#0;class#Server#0" expanded="false" />
-                <element signature="method#register#0;class#Server#0" expanded="false" />
-                <element signature="method#unregister#0;class#Server#0" expanded="false" />
-                <element signature="method#updateAll#0;class#Server#0" expanded="false" />
-                <element signature="method#main#0;class#Server#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RMI_Interface.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/RMI_Interface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-              <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -212,10 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
-        <option value="$PROJECT_DIR$/src/sample/TAGS.java" />
         <option value="$PROJECT_DIR$/src/sample/AddServerIntf.java" />
         <option value="$PROJECT_DIR$/src/sample/Labaserv.java" />
         <option value="$PROJECT_DIR$/src/sample/InClient.java" />
@@ -260,6 +171,13 @@
         <option value="$PROJECT_DIR$/src/sessions/DatabaseSession.java" />
         <option value="$PROJECT_DIR$/src/main/ClientClass.java" />
         <option value="$PROJECT_DIR$/src/main/ClientGUI.java" />
+        <option value="$PROJECT_DIR$/src/test/PopupWindow.java" />
+        <option value="$PROJECT_DIR$/src/test/PopupExample.java" />
+        <option value="$PROJECT_DIR$/src/server/RMI_Interface.java" />
+        <option value="$PROJECT_DIR$/src/server/Server.java" />
+        <option value="$PROJECT_DIR$/src/client/ClientClass.java" />
+        <option value="$PROJECT_DIR$/src/client/ClientDatabaseChoosing.java" />
+        <option value="$PROJECT_DIR$/src/client/ClientGUI.java" />
       </list>
     </option>
   </component>
@@ -330,22 +248,8 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="LabWorks_IT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LabWorks_IT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sessions" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -360,10 +264,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -381,7 +281,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="databases" />
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LabWorks_IT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LabWorks_IT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -402,7 +320,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/client" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
     <property name="options.lastSelected" value="vcs.Git" />
@@ -417,9 +335,11 @@
       <recent name="newclient" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="server" />
       <recent name="sessions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\client" />
       <recent name="C:\Users\SuppieRK\IdeaProjects\LabWorks_IT\src\databases" />
     </key>
   </component>
@@ -459,19 +379,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -498,6 +405,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -558,7 +478,7 @@
     </configuration>
     <configuration default="false" name="Server" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="main.Server" />
+      <option name="MAIN_CLASS_NAME" value="server.Server" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -581,7 +501,7 @@
     </configuration>
     <configuration default="false" name="Client" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="main.ClientGUI" />
+      <option name="MAIN_CLASS_NAME" value="client.ClientGUI" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -632,7 +552,7 @@
     </configuration>
     <configuration default="false" name="Test" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="sessions.Test" />
+      <option name="MAIN_CLASS_NAME" value="test.PopupExample" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -690,7 +610,11 @@
       <created>1416328203296</created>
       <updated>1416328203296</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Initial commit V6">
+      <created>1416341367693</created>
+      <updated>1416341367693</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -705,19 +629,17 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6385911" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17397882" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22239032" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48238897" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -725,6 +647,8 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
@@ -732,15 +656,15 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17170954" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.575804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -753,8 +677,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -777,7 +701,8 @@
     <MESSAGE value="Initial commit V3" />
     <MESSAGE value="Initial commit V4" />
     <MESSAGE value="Initial commit V5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit V5" />
+    <MESSAGE value="Initial commit V6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit V6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -789,210 +714,152 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/RMI_Interface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="578">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="255">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="9809">
           <caret line="38" column="14" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="9809">
           <caret line="38" column="14" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/RMI_Interface.java">
+    <entry file="file://$PROJECT_DIR$/src/server/RMI_Interface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="595">
           <caret line="25" column="34" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Server.java">
+    <entry file="file://$PROJECT_DIR$/src/server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3145" max-vertical-offset="5831">
           <caret line="185" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="337" selection-end-column="0" />
-          <folding>
-            <element signature="method#AddBook#0;class#Server#0" expanded="false" />
-            <element signature="method#DelBook#0;class#Server#0" expanded="false" />
-            <element signature="method#Searching#0;class#Server#0" expanded="false" />
-            <element signature="method#Print#0;class#Server#0" expanded="false" />
-            <element signature="method#register#0;class#Server#0" expanded="false" />
-            <element signature="method#unregister#0;class#Server#0" expanded="false" />
-            <element signature="method#updateAll#0;class#Server#0" expanded="false" />
-            <element signature="method#main#0;class#Server#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/LibraryNodeTags.java">
+    <entry file="file://$PROJECT_DIR$/src/node/LibraryNodeTags.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="306">
           <caret line="12" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/LibraryNode.java">
+    <entry file="file://$PROJECT_DIR$/src/node/LibraryNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="1224">
           <caret line="61" column="3" selection-start-line="0" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6872" max-vertical-offset="8517">
           <caret line="500" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="571" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientClass.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1734">
           <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-          <folding>
-            <element signature="e#722#723#0" expanded="true" />
-            <element signature="e#749#750#0" expanded="true" />
-            <element signature="method#Print#0;class#ClientClass#0" expanded="false" />
-            <element signature="method#AddBook#0;class#ClientClass#0" expanded="false" />
-            <element signature="method#update#0;class#ClientClass#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="255">
           <caret line="5" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/RMI_Interface.java">
+    <entry file="file://$PROJECT_DIR$/src/server/RMI_Interface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
           <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Server.java">
+    <entry file="file://$PROJECT_DIR$/src/server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3145" max-vertical-offset="5831">
           <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
-          <folding>
-            <element signature="method#AddBook#0;class#Server#0" expanded="false" />
-            <element signature="method#DelBook#0;class#Server#0" expanded="false" />
-            <element signature="method#Searching#0;class#Server#0" expanded="false" />
-            <element signature="method#Print#0;class#Server#0" expanded="false" />
-            <element signature="method#register#0;class#Server#0" expanded="false" />
-            <element signature="method#unregister#0;class#Server#0" expanded="false" />
-            <element signature="method#updateAll#0;class#Server#0" expanded="false" />
-            <element signature="method#main#0;class#Server#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/LibraryNodeTags.java">
+    <entry file="file://$PROJECT_DIR$/src/node/LibraryNodeTags.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="306">
           <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/LibraryNode.java">
+    <entry file="file://$PROJECT_DIR$/src/node/LibraryNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="1224">
           <caret line="61" column="3" selection-start-line="61" selection-start-column="3" selection-end-line="61" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="8500" max-vertical-offset="9809">
           <caret line="500" column="0" selection-start-line="500" selection-start-column="0" selection-end-line="500" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientClass.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1734">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#722#723#0" expanded="true" />
-            <element signature="e#749#750#0" expanded="true" />
-            <element signature="method#Print#0;class#ClientClass#0" expanded="false" />
-            <element signature="method#AddBook#0;class#ClientClass#0" expanded="false" />
-            <element signature="method#update#0;class#ClientClass#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="255">
           <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientClass.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1649">
           <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-          <folding>
-            <element signature="e#722#723#0" expanded="true" />
-            <element signature="e#749#750#0" expanded="true" />
-            <element signature="method#Print#0;class#ClientClass#0" expanded="false" />
-            <element signature="method#AddBook#0;class#ClientClass#0" expanded="false" />
-            <element signature="method#update#0;class#ClientClass#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientClass.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="663">
           <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
-          <folding>
-            <element signature="e#722#723#0" expanded="true" />
-            <element signature="e#749#750#0" expanded="true" />
-            <element signature="method#Print#0;class#ClientClass#0" expanded="false" />
-            <element signature="method#AddBook#0;class#ClientClass#0" expanded="false" />
-            <element signature="method#update#0;class#ClientClass#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientClass.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="663">
           <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
-          <folding>
-            <element signature="e#722#723#0" expanded="true" />
-            <element signature="e#749#750#0" expanded="true" />
-            <element signature="method#Print#0;class#ClientClass#0" expanded="false" />
-            <element signature="method#AddBook#0;class#ClientClass#0" expanded="false" />
-            <element signature="method#update#0;class#ClientClass#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/sample.fxml">
+    <entry file="file://$PROJECT_DIR$/src/client/sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="221">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
@@ -1000,7 +867,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/sample.fxml">
+    <entry file="file://$PROJECT_DIR$/src/client/sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="221">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
@@ -1047,7 +914,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6912" vertical-offset="554" max-vertical-offset="1258">
           <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1076,15 +942,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21428572" vertical-offset="347" max-vertical-offset="1156">
           <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/LibraryNodeTags.java">
+    <entry file="file://$PROJECT_DIR$/src/node/LibraryNodeTags.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
           <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1092,15 +956,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0544" vertical-offset="0" max-vertical-offset="625">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1108,7 +970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1116,10 +977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3536" vertical-offset="0" max-vertical-offset="625">
           <caret line="13" column="70" selection-start-line="13" selection-start-column="70" selection-end-line="13" selection-end-column="70" />
-          <folding>
-            <element signature="method#Request#0;class#Request#0" expanded="false" />
-            <element signature="method#toString#0;class#Request#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1127,12 +984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.272" vertical-offset="0" max-vertical-offset="625">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#259#268#0" expanded="true" />
-            <element signature="method#addRequest#0;class#RequestHandler#0" expanded="false" />
-            <element signature="method#searchRequest#0;class#RequestHandler#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1140,57 +991,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1632" vertical-offset="0" max-vertical-offset="625">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/RMI_Interface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="446" max-vertical-offset="1071">
-          <caret line="173" column="73" selection-start-line="173" selection-start-column="73" selection-end-line="173" selection-end-column="73" />
-          <folding>
-            <element signature="method#AddBook#0;class#Server#0" expanded="false" />
-            <element signature="method#DelBook#0;class#Server#0" expanded="false" />
-            <element signature="method#Searching#0;class#Server#0" expanded="false" />
-            <element signature="method#Print#0;class#Server#0" expanded="false" />
-            <element signature="method#register#0;class#Server#0" expanded="false" />
-            <element signature="method#unregister#0;class#Server#0" expanded="false" />
-            <element signature="method#updateAll#0;class#Server#0" expanded="false" />
-            <element signature="method#main#0;class#Server#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sessions/DatabaseSession.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2" max-vertical-offset="1751">
-          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-          <folding>
-            <element signature="method#deleteNode#0;class#DatabaseSession#0" expanded="false" />
-            <element signature="method#SAXReader#0;class#DatabaseSession#0" expanded="false" />
-            <element signature="class#2419:4116" expanded="false" />
-            <element signature="method#startElement#0;class#2419:4116" expanded="false" />
-            <element signature="method#endElement#0;class#2419:4116" expanded="false" />
-            <element signature="method#characters#0;class#2419:4116" expanded="false" />
-            <element signature="method#DOMWriter#0;class#DatabaseSession#0" expanded="false" />
-            <element signature="e#6666#6704#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/SearchMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
-          <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
-          <folding />
+          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1198,73 +1005,85 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.408" vertical-offset="0" max-vertical-offset="663">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/LibraryNode.java">
+    <entry file="file://$PROJECT_DIR$/src/node/LibraryNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
           <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/SearchMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
+          <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/PopupExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22591361" vertical-offset="340" max-vertical-offset="1003">
+          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.592" vertical-offset="412" max-vertical-offset="1037">
+          <caret line="148" column="38" selection-start-line="148" selection-start-column="37" selection-end-line="148" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/RMI_Interface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="19" column="61" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_20/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="11474" max-vertical-offset="33252">
+          <caret line="744" column="0" selection-start-line="744" selection-start-column="0" selection-end-line="744" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/ClientClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1954" max-vertical-offset="2465">
+          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientClass.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_20/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
-          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.33225808" vertical-offset="9060" max-vertical-offset="23715">
+          <caret line="576" column="0" selection-start-line="576" selection-start-column="0" selection-end-line="576" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/ClientDatabaseChoosing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="1768">
+          <caret line="85" column="33" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
           <folding>
-            <element signature="e#722#723#0" expanded="true" />
-            <element signature="e#749#750#0" expanded="true" />
-            <element signature="method#Print#0;class#ClientClass#0" expanded="false" />
-            <element signature="method#AddBook#0;class#ClientClass#0" expanded="false" />
-            <element signature="method#update#0;class#ClientClass#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#ClientDatabaseChoosing#0;class#ClientDatabaseChoosing#0" expanded="false" />
+            <element signature="method#createComboBox#0;class#ClientDatabaseChoosing#0" expanded="false" />
+            <element signature="e#1435#1443#0" expanded="true" />
+            <element signature="method#getDatabaseName#0;class#ClientDatabaseChoosing#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ClientGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5968" vertical-offset="515" max-vertical-offset="9384">
-          <caret line="209" column="24" selection-start-line="209" selection-start-column="24" selection-end-line="209" selection-end-column="24" />
-          <folding>
-            <element signature="method#createTextField#0;class#ClientGUI#0" expanded="false" />
-            <element signature="method#createFields#0;class#ClientGUI#0" expanded="false" />
-            <element signature="e#3609#3620#0" expanded="true" />
-            <element signature="method#createButton#0;class#ClientGUI#0" expanded="false" />
-            <element signature="method#printDatabase#0;class#ClientGUI#0" expanded="false" />
-            <element signature="e#8679#11014#0" expanded="true" />
-            <element signature="e#9917#10862#0" expanded="true" />
-            <element signature="e#10843#10844#0" expanded="true" />
-            <element signature="e#11003#11004#0" expanded="true" />
-            <element signature="e#11061#22117#0" expanded="true" />
-            <element signature="e#12456#14812#0" expanded="true" />
-            <element signature="e#12708#12721#0" expanded="true" />
-            <element signature="e#14793#14794#0" expanded="true" />
-            <element signature="e#14850#17161#0" expanded="true" />
-            <element signature="e#15102#15115#0" expanded="true" />
-            <element signature="e#17142#17143#0" expanded="true" />
-            <element signature="e#17199#19585#0" expanded="true" />
-            <element signature="e#17494#17507#0" expanded="true" />
-            <element signature="e#19566#19567#0" expanded="true" />
-            <element signature="e#19625#22011#0" expanded="true" />
-            <element signature="e#19919#19932#0" expanded="true" />
-            <element signature="e#21992#21993#0" expanded="true" />
-            <element signature="e#22106#22107#0" expanded="true" />
-            <element signature="e#22159#25406#0" expanded="true" />
-            <element signature="e#23180#25297#0" expanded="true" />
-            <element signature="e#25277#25278#0" expanded="true" />
-            <element signature="e#25392#25393#0" expanded="true" />
-            <element signature="e#25445#27871#0" expanded="true" />
-            <element signature="e#27190#27554#0" expanded="true" />
-            <element signature="e#27535#27536#0" expanded="true" />
-            <element signature="e#27860#27861#0" expanded="true" />
-            <element signature="e#27907#28268#0" expanded="true" />
-            <element signature="e#28257#28258#0" expanded="true" />
-            <element signature="e#28993#28994#0" expanded="true" />
-            <element signature="e#29021#29022#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="10.7712" vertical-offset="3043" max-vertical-offset="10064">
+          <caret line="617" column="8" selection-start-line="617" selection-start-column="8" selection-end-line="617" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>

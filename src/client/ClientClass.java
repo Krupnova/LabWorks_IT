@@ -1,8 +1,11 @@
-package main;
+package client;
 
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import node.LibraryNode;
+import server.RMI_Interface;
+import server.SearchMode;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -19,6 +22,7 @@ import java.util.logging.Logger;
 public class ClientClass extends UnicastRemoteObject implements ClientInterface {
     private RMI_Interface server;
     public final static ObservableList<LibraryNode> data = FXCollections.observableArrayList();
+    private int chosenDatabase = -1;
 
     public ObservableList<LibraryNode> getData() {
         return data;
@@ -38,7 +42,7 @@ public class ClientClass extends UnicastRemoteObject implements ClientInterface 
     public void lib(ClientClass client) throws RemoteException, NotBoundException {
 
         // #debug
-        System.out.println("Choose database:");
+        /*System.out.println("Choose database:");
         for (String elem: DATABASES) {
             System.out.println(elem);
         }
@@ -55,14 +59,14 @@ public class ClientClass extends UnicastRemoteObject implements ClientInterface 
             e.printStackTrace();
         }
 
-        System.out.println("Your choice: " + choose);
+        System.out.println("Your choice: " + choose);*/
 
         //#debug
 
         String objectName = "server";
         Registry registry = LocateRegistry.getRegistry("127.0.0.1", 1099);
         server = (RMI_Interface) registry.lookup(objectName);
-        server.register(client, DATABASES[choose - 1]);
+        //server.register(client, DATABASES[choose - 1]);
     }
 
     public List Print() throws RemoteException {
@@ -99,6 +103,17 @@ public class ClientClass extends UnicastRemoteObject implements ClientInterface 
     public void regAll() throws RemoteException {
         server.updateAll(this);
     }
+
+    // Получение списка баз данных
+    public ObservableList<String> getDatabaseList() throws RemoteException {
+        return FXCollections.observableArrayList(server.getDatabaseList());
+    }
+
+    // Выбор базы данных и регистрация
+    public void setDatabase(String databaseName) throws Exception {
+        server.register(this, databaseName);
+    }
+
 
     public int update() throws RemoteException {
 

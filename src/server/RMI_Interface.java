@@ -1,10 +1,11 @@
-package main;
+package server;
+
+import client.ClientInterface;
+import node.LibraryNode;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public interface RMI_Interface extends Remote {
 
@@ -16,7 +17,7 @@ public interface RMI_Interface extends Remote {
 
     public LinkedList<LibraryNode> Print(ClientInterface client) throws RemoteException;
 
-    //public void DeleteKol() throws RemoteException;
+    public String[] getDatabaseList() throws RemoteException;
 
     public void updateAll(ClientInterface client) throws RemoteException;
 

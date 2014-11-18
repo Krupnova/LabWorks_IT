@@ -1,6 +1,6 @@
 package sessions;
 
-import main.LibraryNode;
+import node.LibraryNode;
 
 // Структура пользовательского запроса
 public class Request {
