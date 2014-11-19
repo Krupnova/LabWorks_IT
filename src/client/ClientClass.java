@@ -18,7 +18,7 @@ public class ClientClass extends UnicastRemoteObject implements ClientInterface 
     // Объект, хранящий интерфейс сервера
     private RMI_Interface server;
     // Объект, хранящий данные базы данных
-    public final static ObservableList<LibraryNode> data = FXCollections.observableArrayList();
+    public ObservableList<LibraryNode> data = FXCollections.observableArrayList();
     // Переменная, хранящая состояние клиента (зарегистрирован на сервере или нет)
     private boolean isRegistered = false;
 
@@ -85,6 +85,7 @@ public class ClientClass extends UnicastRemoteObject implements ClientInterface 
     public void setDatabase(ClientClass client, String databaseName) throws Exception {
         server.register(client, databaseName);
         this.isRegistered = true;
+        this.data.addAll(server.Print(client));
     }
 
     // Обновление данных на клиенте
@@ -92,13 +93,8 @@ public class ClientClass extends UnicastRemoteObject implements ClientInterface 
         ArrayList<LibraryNode> data1 = new ArrayList<LibraryNode>();
         try {
             data1.addAll(server.Print(this));
-        } catch (RemoteException ex) {
-            System.err.println("Could not connect to the server");
-        }
-
-        if (!data1.isEmpty()) {
             data.clear();
             data.addAll(data1);
-        }
+        } catch (IllegalStateException e) {}
     }
 }

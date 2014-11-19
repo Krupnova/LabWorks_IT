@@ -46,8 +46,33 @@ public class DatabaseSession implements Runnable {
 
     // Добавление в базу
     public void addNode(LibraryNode source) {
-        DATABASE.add(source);
-        this.checkID();
+        if (!isCollisionOccurs(source)) {
+            DATABASE.add(source);
+            this.checkID();
+        }
+    }
+
+    // Метод, разрешающий возникновение коллизий внутри базы данных
+    private boolean isCollisionOccurs(LibraryNode source) {
+        for (LibraryNode node: DATABASE) {
+            if (nodeComparator(node, source))
+                return true;
+        }
+
+        return false;
+    }
+
+    // Утилита для сравнения двух записей
+    private boolean nodeComparator (LibraryNode a, LibraryNode b) {
+        if (
+                !a.getName().equals(b.getName()) ||
+                        !a.getAuthor().equals(b.getAuthor()) ||
+                        a.getDate() != b.getDate() ||
+                        a.getNumber() != b.getNumber()
+                )
+            return false;
+        else
+            return true;
     }
 
     // Удаление из базы (исключение, если база пуста или такого элемента нет)

@@ -24,16 +24,4 @@
     <author>asa</author>
     <date>131</date>
   </book>
-  <book id="4">
-    <numOfBook>12</numOfBook>
-    <name>eqe</name>
-    <author>asda</author>
-    <date>12</date>
-  </book>
-  <book id="5">
-    <numOfBook>1</numOfBook>
-    <name>asd</name>
-    <author>asd</author>
-    <date>1</date>
-  </book>
 </library>

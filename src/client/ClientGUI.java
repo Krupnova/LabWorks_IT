@@ -2,6 +2,7 @@ package client;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -48,8 +49,11 @@ public class ClientGUI extends Application {
     // Константа, которая хранит отступ слева по-умолчанию для элементов сцены root
     private final double ROOT_STAGE_LEFT_SPACING = 50;
 
-    // Создаём буффер для созданных графических элементов
+    // Создаём буфер для созданных графических элементов
     private LinkedList<Object> objectBuffer = new LinkedList<Object>();
+
+    // Таблица
+    private TableView mainDatabase;
 
     // Стандартные поля и значения
     private final String[] TOOLS_LIST = {
@@ -98,7 +102,7 @@ public class ClientGUI extends Application {
     private TextField createTextField (Group root, final double layoutX, final double layoutY, final double width,
                                        final String fieldName) {
         // Создаём новый текстовый объект с именем поля
-        Label newLabel = createLabel(root, layoutX + DEFAULT_LEFT_SPACING, layoutY, fieldName);
+        createLabel(root, layoutX + DEFAULT_LEFT_SPACING, layoutY, fieldName);
         // Создаём новое текстовое поле
         TextField newTextField = new TextField();
         // Задаём ему размеры
@@ -188,7 +192,6 @@ public class ClientGUI extends Application {
             // Задаём её название
             newColumn.setText(columns[i]);
             // Задаём её минимальную ширину
-            //newColumn.setMinWidth(tableWidth / columns.length);
             newColumn.setMaxWidth(tableWidth / columns.length);
             // Задаём значение, которое будет храниться в этой колонке из LibraryNode
             newColumn.setCellValueFactory(new PropertyValueFactory(columnsValues[i]));
@@ -196,10 +199,10 @@ public class ClientGUI extends Application {
             newTableView.getColumns().add(newColumn);
         }
 
+        //
         client.update();
         // Заполняем таблицу
         newTableView.setItems(client.getData());
-
         // Помещаем её на форму
         root.getChildren().add(newTableView);
         // Возвращаем таблицу
@@ -244,7 +247,7 @@ public class ClientGUI extends Application {
         try {
             databaseList = client.getDatabaseList();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            System.err.println("Could not connect to the server.");
         }
 
         // Создадим выпадающий список и заполним его значениями
@@ -304,11 +307,8 @@ public class ClientGUI extends Application {
                     );
                     layouts.getChildren().remove(this);
                     clearObjectBuffer(newGroup);
-                    client.update();
                     layouts.getChildren().add(initializeGUI());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                } catch (Exception e) {}
             }
         });
 
@@ -341,8 +341,10 @@ public class ClientGUI extends Application {
         final Group root = new Group();
         // Инициализируем панель инструментов
         LinkedList<Button> tools = createToolbar(root, TOOLS_LIST);
+        // Обновляем БД
+        // client.update();
         // Выводим базу данных
-        final TableView mainDatabase = printDatabase(root, TABLE_FIELDS_NAMES, TABLE_FIELDS);
+        mainDatabase = printDatabase(root, TABLE_FIELDS_NAMES, TABLE_FIELDS);
         // Разрешаем множественное выделение строк в базе данных
         mainDatabase.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         // Создаём подложку для области ввода данных для запросов к базе
@@ -392,18 +394,17 @@ public class ClientGUI extends Application {
                                 return;
                             }
                         }
-
-                        client.AddBook(
-                                new LibraryNode(
-                                        0,
-                                        Long.parseLong(addFields.get(0).getText()),
-                                        addFields.get(1).getText(),
-                                        Long.parseLong(addFields.get(2).getText()),
-                                        addFields.get(3).getText()
-                                )
-                        );
-
                         try {
+                            client.AddBook(
+                                    new LibraryNode(
+                                            0,
+                                            Long.parseLong(addFields.get(0).getText()),
+                                            addFields.get(1).getText(),
+                                            Long.parseLong(addFields.get(2).getText()),
+                                            addFields.get(3).getText()
+                                    )
+                            );
+
                             client.updateAll();
                         } catch (RemoteException ex) {
                             System.err.println("Could not connect to the server");
@@ -511,6 +512,8 @@ public class ClientGUI extends Application {
                 // Если ищем по дате
                 byDate.setOnAction(new EventHandler<ActionEvent>() {
                     public void handle(ActionEvent event) {
+
+
                         // Проверка данных
                         if (!isValidLong(text.getText()))
                             return;
@@ -578,9 +581,19 @@ public class ClientGUI extends Application {
                         -1,
                         "УДАЛИТЬ"
                 );
+
+                // Создаём текстовое поле с уведомлением
+                final Label notification = createLabel(
+                        root,
+                        ROOT_STAGE_LEFT_SPACING,
+                        TOOLS_HEIGHT + 2 * (2 * DEFAULT_HEIGHT + DEFAULT_SPACING) + DEFAULT_SPACING,
+                        ""
+                );
+
                 // Задаём действие на кнопку подтверждения удаления
                 deleteButton.setOnAction(new EventHandler<ActionEvent>() {
                     public void handle(ActionEvent event) {
+                        notification.setText("");
                         // Берём ID элемента с проверкой
                         int removeIndex;
                         // Проверка введённых данных
@@ -589,26 +602,13 @@ public class ClientGUI extends Application {
                         } catch (NumberFormatException nfe) {
                             return;
                         }
-                        // Проверка границ диапазона
-                        if ((removeIndex < 0) || (removeIndex >= mainDatabase.getItems().size()))
-                            return;
 
                         // Удаляем
                         try {
                             if (client.DelBook(removeIndex)) {
-                                createLabel(
-                                        root,
-                                        ROOT_STAGE_LEFT_SPACING,
-                                        TOOLS_HEIGHT + 2 * (2 * DEFAULT_HEIGHT + DEFAULT_SPACING) + DEFAULT_SPACING,
-                                        ("Запись # " + id.getText() + " была успешно удалена.")
-                                );
+                                notification.setText("Запись # " + id.getText() + " была удалена.");
                             } else {
-                                createLabel(
-                                        root,
-                                        ROOT_STAGE_LEFT_SPACING,
-                                        TOOLS_HEIGHT + 2 * (2 * DEFAULT_HEIGHT + DEFAULT_SPACING) + DEFAULT_SPACING,
-                                        ("Запись # " + id.getText() + " не была удалена.")
-                                );
+                                notification.setText("Запись # " + id.getText() + " не была удалена.");
                             }
 
                             client.updateAll();

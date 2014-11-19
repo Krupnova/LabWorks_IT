@@ -73,7 +73,7 @@ public class Server extends UnicastRemoteObject implements RMI_Interface {
     }
 
     // Поиск в базе данных (синхронизировано, т.к. databases в общем доступе)
-    public synchronized LinkedList<LibraryNode> Searching(String source, SearchMode mode, ClientInterface client)
+    public LinkedList<LibraryNode> Searching(String source, SearchMode mode, ClientInterface client)
             throws RemoteException {
         LinkedList<LibraryNode> result = new LinkedList<LibraryNode>();
 
@@ -112,7 +112,7 @@ public class Server extends UnicastRemoteObject implements RMI_Interface {
     }
 
     // Вывод на экран (синхронизировано, т.к. databases в общем доступе)
-    public synchronized LinkedList<LibraryNode> Print(ClientInterface client) throws RemoteException {
+    public LinkedList<LibraryNode> Print(ClientInterface client) throws RemoteException {
         return databases.get(clientsList.get(client));
     }
 
@@ -173,12 +173,17 @@ public class Server extends UnicastRemoteObject implements RMI_Interface {
     }
 
     // Обновление данных на всех клиентах
-    public void updateAll(ClientInterface client) throws RemoteException {
+    public synchronized void updateAll(ClientInterface client) throws RemoteException {
         // Проходим по всем записям в clientList используя
         for (Map.Entry<ClientInterface, Integer> clientNode : clientsList.entrySet()) {
             // И вызываем метод update для клиентов в этой же сессии
-            if (clientNode.getValue().equals(clientsList.get(client)))
-                clientNode.getKey().update();
+            if (clientNode.getValue().equals(clientsList.get(client))) {
+                try {
+                    clientNode.getKey().update();
+                } catch (Exception e) {
+                    clientsList.remove(clientNode.getKey(), clientNode.getValue());
+                }
+            }
         }
     }
 
