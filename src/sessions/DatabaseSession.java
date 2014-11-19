@@ -30,8 +30,6 @@ public class DatabaseSession implements Runnable {
     private RequestHandler requestHandler;
     // Переменная, управляющая телом потока
     private boolean isStopped = false;
-    // Объект, хранящий ссылку на сервер
-    //private final Server
 
     // Конструктор
     public DatabaseSession(LinkedList<LibraryNode> database, String DATABASE_PATH, RequestHandler requestHandler) {
@@ -49,14 +47,24 @@ public class DatabaseSession implements Runnable {
     // Добавление в базу
     public void addNode(LibraryNode source) {
         DATABASE.add(source);
+        this.checkID();
     }
 
     // Удаление из базы (исключение, если база пуста или такого элемента нет)
     public void deleteNode(LibraryNode source) throws IOException {
-        if (DATABASE.contains(source))
+        if (DATABASE.contains(source)) {
             DATABASE.remove(source);
-        else
+            this.checkID();
+        } else {
             throw new IOException("Attempt to delete non-existing element.");
+        }
+    }
+
+    // Метод для проверки корректности идентификаторов
+    private void checkID () {
+        for (int i = 0; i < DATABASE.size(); i++) {
+            DATABASE.get(i).setId(i);
+        }
     }
 
     // Методы чтения и записи (файлы)

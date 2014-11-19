@@ -1,31 +1,33 @@
 package client;
 
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javafx.application.Application;
-//import static javafx.application.Application.launch;
-
-import static javafx.application.Application.launch;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import node.LibraryNode;
 import server.SearchMode;
 
+import java.rmi.RemoteException;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class ClientGUI extends Application {
     // Класс, реализующий связь с сервером
     private ClientClass client;
+    // Класс, хранящий список баз данных
+    private ObservableList<String> databaseList;
+    // Хранилище сцен графического интерфейса
+    private StackPane layouts;
 
     // Константа, хранящая высоту элементов по-умолчанию
     private final double DEFAULT_HEIGHT = 20;
@@ -43,7 +45,32 @@ public class ClientGUI extends Application {
     private final double TOOLS_WIDTH = 350;
     // Константа, которая хранит высоту панели инструментов
     private final double TOOLS_HEIGHT = 40;
+    // Константа, которая хранит отступ слева по-умолчанию для элементов сцены root
+    private final double ROOT_STAGE_LEFT_SPACING = 50;
 
+    // Стандартные поля и значения
+    private final String[] TOOLS_LIST = {
+            "Добавление",
+            "Удаление",
+            "Обновить",
+            "Найти"
+    };
+
+    private final String[] TABLE_FIELDS_NAMES = {
+            "ID",
+            "Номер",
+            "Название",
+            "Дата",
+            "Автор"
+    };
+
+    private final String[] TABLE_FIELDS = {
+            "id",
+            "number",
+            "name",
+            "date",
+            "author"
+    };
 
     // Метод для создания текстовых полей
     private Label createLabel (Group root, final double layoutX, final double layoutY, final String text) {
@@ -133,7 +160,7 @@ public class ClientGUI extends Application {
     }
 
     // Метод для вывода базы данных
-    private TableView printDatabase (Group root, final String[] columns, final String[] columnsValues) {
+    private TableView printDatabase (Group root, final String[] columns, final String[] columnsValues) throws RemoteException {
         // Создаём объект таблицы
         TableView newTableView = new TableView();
         // Задаём параметры
@@ -144,6 +171,8 @@ public class ClientGUI extends Application {
 
         newTableView.setMaxWidth(tableWidth);
         newTableView.setMinWidth(tableWidth);
+        newTableView.setMinHeight(WINDOW_HEIGHT - TOOLS_HEIGHT);
+        newTableView.setMaxHeight(WINDOW_HEIGHT - TOOLS_HEIGHT);
 
         // Создадим колонки для таблицы
         for (int i = 0; i < columns.length; i++) {
@@ -152,13 +181,15 @@ public class ClientGUI extends Application {
             // Задаём её название
             newColumn.setText(columns[i]);
             // Задаём её минимальную ширину
-            newColumn.setMinWidth(tableWidth / columns.length);
+            //newColumn.setMinWidth(tableWidth / columns.length);
+            newColumn.setMaxWidth(tableWidth / columns.length);
             // Задаём значение, которое будет храниться в этой колонке из LibraryNode
             newColumn.setCellValueFactory(new PropertyValueFactory(columnsValues[i]));
             // Помещаем в таблицу
             newTableView.getColumns().add(newColumn);
         }
 
+        client.update();
         // Заполняем таблицу
         newTableView.setItems(client.getData());
 
@@ -200,62 +231,131 @@ public class ClientGUI extends Application {
         objectBuffer.clear();
     }
 
-    private void initializeGUI(final Stage primaryStage) throws Exception {
+    // Создаём группу объектов для выбора базы данных
+    private Group selectDatabase () throws Exception {
+        // Создаём группу объектов
+        final Group newGroup = new Group();
 
-        System.out.println("Starting...");
+        // Создаём фон группы
+        Rectangle background = new Rectangle(WINDOW_WIDTH, WINDOW_HEIGHT);
+        background.setFill(Color.LIGHTGRAY);
+        newGroup.getChildren().add(background);
+        objectBuffer.add(background);
 
-        // Инициализируем объект, который служит для связи с сервером.
-        client = new ClientClass();
-        // Пробуем присоединиться к серверу
-        client.lib(client);
+        // Получим данные от сервера о базах данных
+        try {
+            databaseList = client.getDatabaseList();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        // Создадим выпадающий список и заполним его значениями
+        ObservableList<String> comboBoxValues = FXCollections.observableArrayList();
+        // Заполняем его значениями
+        if (!databaseList.isEmpty()) {
+            for (String source : databaseList) {
+                comboBoxValues.add(getDatabaseName(source));
+            }
+        } else {
+            throw new Exception("Cannot initialize database list.");
+        }
+        // Размеры списка
+        final double comboBoxWidth = 350, comboBoxHeight = 25;
+        // Создаём объект combo box
+        final ComboBox<String> newComboBox = new ComboBox<String>(comboBoxValues);
+        // Зададим параметры списка
+        newComboBox.setMinSize(comboBoxWidth, comboBoxHeight);
+        newComboBox.setMaxSize(comboBoxWidth, comboBoxHeight);
+        newComboBox.setLayoutX((WINDOW_WIDTH - comboBoxWidth) / 2);
+        newComboBox.setLayoutY(2 * DEFAULT_SPACING + DEFAULT_HEIGHT);
+        newComboBox.setItems(comboBoxValues);
+        newComboBox.setValue(comboBoxValues.get(0));
+        // Добавляем список на форму
+        newGroup.getChildren().add(newComboBox);
+        objectBuffer.add(newComboBox);
+
+        // Создадим текстовое поле
+        createLabel(
+                newGroup,
+                ((WINDOW_WIDTH - comboBoxWidth) / 2) + DEFAULT_LEFT_SPACING,
+                DEFAULT_SPACING,
+                "Выберите базу данных из списка"
+        );
+
+        // Создадим кнопки управления
+        final double buttonSpace = DEFAULT_HEIGHT;
+        final double buttonWidth = (comboBoxWidth - 2 * DEFAULT_LEFT_SPACING - buttonSpace) / 2;
+
+        Button confirm = createButton(
+                newGroup,
+                ((WINDOW_WIDTH - comboBoxWidth) / 2) + DEFAULT_LEFT_SPACING,
+                3 * DEFAULT_SPACING + DEFAULT_HEIGHT + comboBoxHeight,
+                buttonWidth,
+                "OK"
+        );
+
+        confirm.setDefaultButton(true);
+
+        confirm.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    client.setDatabase(
+                            client,
+                            databaseList.get(newComboBox.getSelectionModel().getSelectedIndex())
+                            );
+                    layouts.getChildren().remove(this);
+                    clearObjectBuffer(newGroup);
+                    client.update();
+                    layouts.getChildren().add(initializeGUI());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
 
-        ClientDatabaseChoosing dbChoose = new ClientDatabaseChoosing(client, this);
-        dbChoose.start(new Stage());
+        Button decline = createButton(
+                newGroup,
+                ((WINDOW_WIDTH - comboBoxWidth) / 2) + DEFAULT_LEFT_SPACING + buttonWidth + buttonSpace,
+                3 * DEFAULT_SPACING + DEFAULT_HEIGHT + comboBoxHeight,
+                buttonWidth,
+                "Cancel"
+        );
 
+        decline.setCancelButton(true);
 
+        decline.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Database was not chosen, exit!");
+                System.exit(0);
+            }
+        });
+
+        // Возвращаем группу объектов
+        return newGroup;
+    }
+
+    // Строковый парсер, убирающий все ненужные символы, кроме названия базы данных
+    private String getDatabaseName(String source) {
+        return source.substring(source.lastIndexOf('/') + 1, source.lastIndexOf('.'));
+    }
+
+    // Инициализируем графический интерфейс
+    private Group initializeGUI() throws Exception {
         // Инициализируем базовую группу инструментов рабочего окна
         final Group root = new Group();
-        // Запрещаем изменение размеров окна
-        primaryStage.setResizable(false);
-        // Задание параметров основного окна программы (объект сцены, ширина, высота)
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setMinWidth(WINDOW_WIDTH);
-        primaryStage.setMaxWidth(WINDOW_WIDTH);
-        primaryStage.setMinHeight(WINDOW_HEIGHT);
-        primaryStage.setMaxHeight(WINDOW_HEIGHT);
         // Инициализируем панель инструментов
-        LinkedList<Button> tools = createToolbar(
-                root,
-                new String[] {
-                        "Добавление",
-                        "Удаление",
-                        "Обновить",
-                        "Найти"
-                }
-        );
+        LinkedList<Button> tools = createToolbar(root, TOOLS_LIST);
         // Добавляем индексы кнопок, для использования
         int addIndex = 0, deleteIndex = 1, refreshIndex = 2, findIndex = 3;
         // Обновляем базу данных
-        client.update();
+        while(client.getData() == null) {
+            client.update();
+        }
         // Выводим базу данных
-        final TableView mainDatabase = printDatabase(
-                root,
-                new String[]{
-                        "ID",
-                        "Номер",
-                        "Название",
-                        "Дата",
-                        "Автор"
-                },
-                new String[]{
-                        "id",
-                        "number",
-                        "name",
-                        "date",
-                        "author"
-                }
-        );
+        final TableView mainDatabase = printDatabase(root, TABLE_FIELDS_NAMES, TABLE_FIELDS);
         // Разрешаем множественное выделение строк в базе данных
         mainDatabase.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         // Создаём подложку для области ввода данных для запросов к базе
@@ -279,20 +379,18 @@ public class ClientGUI extends Application {
                         "Дата выдачи",
                         "Автор"
                 };
-                // Создадим переменную для хранения левого отступа
-                double leftSpace = 50;
                 // Создаём текстовые поля
                 final LinkedList<TextField> addFields = createFields(
                         root,
-                        leftSpace,
+                        ROOT_STAGE_LEFT_SPACING,
                         TOOLS_HEIGHT,
-                        TOOLS_WIDTH - 2 * leftSpace,
+                        TOOLS_WIDTH - 2 * ROOT_STAGE_LEFT_SPACING,
                         textFieldsName
                 );
                 // Кнопка для подтверждения
                 Button addConfirm = createButton(
                         root,
-                        leftSpace + DEFAULT_BUTTON_LEFT_SPACING,
+                        ROOT_STAGE_LEFT_SPACING + DEFAULT_BUTTON_LEFT_SPACING,
                         TOOLS_HEIGHT + textFieldsName.length * (2 * DEFAULT_HEIGHT + DEFAULT_SPACING) + DEFAULT_SPACING,
                         -1,
                         "OKAY"
@@ -328,47 +426,45 @@ public class ClientGUI extends Application {
                 clearObjectBuffer(root);
                 // Задаём фон
                 toolsBackground.setFill(Color.GREEN);
-                // Создадим переменную для хранения левого отступа
-                double leftSpace = 50;
                 // Cоздадим переменную, которая хранит расстояние между кнопками
                 double space = 10;
                 // Количество кнопок
                 double buttonsAmount = 4;
                 // Создадим переменную, которая хранит ширину кнопок
-                double buttonWidth = ((TOOLS_WIDTH - 2 * leftSpace) - (buttonsAmount - 1) * space) / buttonsAmount;
+                double buttonWidth = ((TOOLS_WIDTH - 2 * ROOT_STAGE_LEFT_SPACING) - (buttonsAmount - 1) * space) / buttonsAmount;
                 // Создаём текстовое поле
                 final TextField text = createTextField(
                         root,
-                        leftSpace,
+                        ROOT_STAGE_LEFT_SPACING,
                         TOOLS_HEIGHT,
-                        TOOLS_WIDTH - 2 * leftSpace,
+                        TOOLS_WIDTH - 2 * ROOT_STAGE_LEFT_SPACING,
                         "Введите данные элемента для поиска:"
                 );
                 // Создадим кнопки
                 Button byNumber = createButton(
                         root,
-                        leftSpace,
+                        ROOT_STAGE_LEFT_SPACING,
                         TOOLS_HEIGHT + (2 * DEFAULT_HEIGHT + DEFAULT_SPACING) + DEFAULT_SPACING,
                         buttonWidth,
                         "Номер"
                 );
                 Button byDate = createButton(
                         root,
-                        leftSpace + (buttonWidth + space),
+                        ROOT_STAGE_LEFT_SPACING + (buttonWidth + space),
                         TOOLS_HEIGHT + (2 * DEFAULT_HEIGHT + DEFAULT_SPACING) + DEFAULT_SPACING,
                         buttonWidth,
                         "Дата"
                 );
                 Button byName = createButton(
                         root,
-                        leftSpace + 2*(buttonWidth + space),
+                        ROOT_STAGE_LEFT_SPACING + 2*(buttonWidth + space),
                         TOOLS_HEIGHT + (2 * DEFAULT_HEIGHT + DEFAULT_SPACING) + DEFAULT_SPACING,
                         buttonWidth,
                         "Имя"
                 );
                 Button byAuthor = createButton(
                         root,
-                        leftSpace + 3*(buttonWidth + space),
+                        ROOT_STAGE_LEFT_SPACING + 3*(buttonWidth + space),
                         TOOLS_HEIGHT + (2 * DEFAULT_HEIGHT + DEFAULT_SPACING) + DEFAULT_SPACING,
                         buttonWidth,
                         "Автор"
@@ -467,20 +563,18 @@ public class ClientGUI extends Application {
                 clearObjectBuffer(root);
                 // Задаём фон
                 toolsBackground.setFill(Color.YELLOW);
-                // СОздадим переменную для хранения левого отступа
-                final double leftSpace = 50;
                 // Создаём текстовое поле
                 final TextField id = createTextField(
                         root,
-                        leftSpace,
+                        ROOT_STAGE_LEFT_SPACING,
                         TOOLS_HEIGHT,
-                        TOOLS_WIDTH - 2 * leftSpace,
+                        TOOLS_WIDTH - 2 * ROOT_STAGE_LEFT_SPACING,
                         "Введите ID удаляемого элемента:"
                 );
                 // Создаём кнопку подтверждения
                 Button deleteButton = createButton(
                         root,
-                        leftSpace + DEFAULT_BUTTON_LEFT_SPACING,
+                        ROOT_STAGE_LEFT_SPACING + DEFAULT_BUTTON_LEFT_SPACING,
                         TOOLS_HEIGHT + (2 * DEFAULT_HEIGHT + DEFAULT_SPACING) + DEFAULT_SPACING,
                         -1,
                         "УДАЛИТЬ"
@@ -495,14 +589,14 @@ public class ClientGUI extends Application {
                             if (client.DelBook(num)) {
                                 createLabel(
                                         root,
-                                        leftSpace,
+                                        ROOT_STAGE_LEFT_SPACING,
                                         TOOLS_HEIGHT + 2 * (2 * DEFAULT_HEIGHT + DEFAULT_SPACING) + DEFAULT_SPACING,
                                         ("Запись # " + id.getText() + " была успешно удалена.")
                                 );
                             } else {
                                 createLabel(
                                         root,
-                                        leftSpace,
+                                        ROOT_STAGE_LEFT_SPACING,
                                         TOOLS_HEIGHT + 2 * (2 * DEFAULT_HEIGHT + DEFAULT_SPACING) + DEFAULT_SPACING,
                                         ("Запись # " + id.getText() + " не была удалена.")
                                 );
@@ -598,15 +692,19 @@ public class ClientGUI extends Application {
             }
         });*/
 
+        // Возвращаем группу
+        return root;
     }
 
     // Метод обработки закрытия окна через крестик в углу
     @Override
     public void stop() {
-        try {
-            client.unregister(client);
-        } catch (RemoteException e) {
-            e.printStackTrace();
+        if (client.isRegistered()) {
+            try {
+                client.unregister(client);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
         System.out.println("Exit!");
         System.exit(0);
@@ -616,10 +714,26 @@ public class ClientGUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        // Инициализируем окно
-        initializeGUI(primaryStage);
+        // Инициализируем объект, который служит для связи с сервером.
+        client = new ClientClass();
+        // Пробуем присоединиться к серверу
+        client.lib();
+
         // Указываем титульник окна
         primaryStage.setTitle("Книги");
+        // Запрещаем изменение размеров окна
+        primaryStage.setResizable(false);
+        // Задание параметров основного окна программы (объект сцены, ширина, высота)
+        primaryStage.setMinWidth(WINDOW_WIDTH + 5);
+        primaryStage.setMaxWidth(WINDOW_WIDTH + 5);
+        primaryStage.setMinHeight(WINDOW_HEIGHT + 25);
+        primaryStage.setMaxHeight(WINDOW_HEIGHT + 25);
+
+        layouts = new StackPane();
+        layouts.getChildren().add(selectDatabase());
+
+        primaryStage.setScene(new Scene(layouts));
+
         // Показываем окно
         primaryStage.show();
     }

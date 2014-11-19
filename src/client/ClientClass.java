@@ -23,6 +23,11 @@ public class ClientClass extends UnicastRemoteObject implements ClientInterface 
     private RMI_Interface server;
     public final static ObservableList<LibraryNode> data = FXCollections.observableArrayList();
     private int chosenDatabase = -1;
+    private boolean isRegistered = false;
+
+    public boolean isRegistered() {
+        return isRegistered;
+    }
 
     public ObservableList<LibraryNode> getData() {
         return data;
@@ -39,7 +44,7 @@ public class ClientClass extends UnicastRemoteObject implements ClientInterface 
         super();
     }
 
-    public void lib(ClientClass client) throws RemoteException, NotBoundException {
+    public void lib(/*ClientClass client, String databaseName*/) throws RemoteException, NotBoundException {
 
         // #debug
         /*System.out.println("Choose database:");
@@ -110,8 +115,9 @@ public class ClientClass extends UnicastRemoteObject implements ClientInterface 
     }
 
     // Выбор базы данных и регистрация
-    public void setDatabase(String databaseName) throws Exception {
-        server.register(this, databaseName);
+    public void setDatabase(ClientClass client, String databaseName) throws Exception {
+        server.register(client, databaseName);
+        this.isRegistered = true;
     }
 
 
