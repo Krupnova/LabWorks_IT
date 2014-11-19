@@ -1,6 +1,5 @@
 package client;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import node.LibraryNode;
@@ -14,98 +13,66 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ClientClass extends UnicastRemoteObject implements ClientInterface {
+    // Объект, хранящий интерфейс сервера
     private RMI_Interface server;
+    // Объект, хранящий данные базы данных
     public final static ObservableList<LibraryNode> data = FXCollections.observableArrayList();
-    private int chosenDatabase = -1;
+    // Переменная, хранящая состояние клиента (зарегистрирован на сервере или нет)
     private boolean isRegistered = false;
 
-    public boolean isRegistered() {
-        return isRegistered;
-    }
-
-    public ObservableList<LibraryNode> getData() {
-        return data;
-    }
-
-    // #debug
-    private static final String [] DATABASES = {
-            "src/databases/DATABASE1.xml",
-            "src/databases/DATABASE2.xml",
-            "src/databases/DATABASE3.xml"
-    };
-
+    // Конструктор
     public ClientClass() throws RemoteException {
         super();
     }
 
-    public void lib(/*ClientClass client, String databaseName*/) throws RemoteException, NotBoundException {
+    // Метод, возвращающий состояние клиента
+    public boolean isRegistered() {
+        return isRegistered;
+    }
 
-        // #debug
-        /*System.out.println("Choose database:");
-        for (String elem: DATABASES) {
-            System.out.println(elem);
-        }
+    // Метод, возвращающий данные из базы данных
+    public ObservableList<LibraryNode> getData() {
+        return data;
+    }
 
-        int choose = -1;
-
-        System.out.println("From 1 to 3: ");
-
-        Scanner keyboard = new Scanner(System.in);
-
-        try {
-            choose = keyboard.nextInt();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("Your choice: " + choose);*/
-
-        //#debug
-
+    // Метод, осуществляющий начальное подключение к серверу (подключиться, но не регистрироваться)
+    public void connect() throws RemoteException, NotBoundException {
+        // Имя объекта
         String objectName = "server";
+        // Создаём объект, хранящий запись из регистра по указанным IP и порту
         Registry registry = LocateRegistry.getRegistry("127.0.0.1", 1099);
+        // Ищем в регистре объует с указанным именем
         server = (RMI_Interface) registry.lookup(objectName);
-        //server.register(client, DATABASES[choose - 1]);
     }
 
-    public List Print() throws RemoteException {
-        List data1;
-        data1 = server.Print(this);
-        return data1;
-    }
-
+    // Добавление записи
     public void AddBook(LibraryNode book) {
         try {
             server.AddBook(book, this);
         } catch (RemoteException ex) {
-            Logger.getLogger(ClientClass.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("Could not connect to the server.");
         }
-
     }
 
-    public LinkedList<LibraryNode> Searching(String ser, SearchMode mode) throws RemoteException {
-        return server.Searching(ser, mode, this);
+    // Поиск записи
+    public LinkedList<LibraryNode> Searching(String searchSource, SearchMode mode) throws RemoteException {
+        return server.Searching(searchSource, mode, this);
     }
 
-    public Boolean DelBook(int num) throws RemoteException {
-        return server.DelBook(num, this);
+    // Удаление записи
+    public Boolean DelBook(int index) throws RemoteException {
+        return server.DelBook(index, this);
     }
 
-    /*public void DeleteKol() throws RemoteException {
-        server.DeleteKol();
-    }*/
-
+    // Отмена регистрации клиента
     public void unregister(ClientInterface client) throws RemoteException {
         server.unregister(client);
     }
 
-    public void regAll() throws RemoteException {
+    // Обновление данных для всех клиентов
+    public void updateAll() throws RemoteException {
         server.updateAll(this);
     }
 
@@ -120,27 +87,18 @@ public class ClientClass extends UnicastRemoteObject implements ClientInterface 
         this.isRegistered = true;
     }
 
-
-    public int update() throws RemoteException {
-
+    // Обновление данных на клиенте
+    public void update() throws RemoteException {
         ArrayList<LibraryNode> data1 = new ArrayList<LibraryNode>();
         try {
             data1.addAll(server.Print(this));
         } catch (RemoteException ex) {
-            Logger.getLogger(ClientGUI.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("Could not connect to the server");
         }
 
-        data.clear();
-
-        data.addAll(data1);
-
-        return 0;
+        if (!data1.isEmpty()) {
+            data.clear();
+            data.addAll(data1);
+        }
     }
-
-    public ObservableList<LibraryNode> print() throws RemoteException {
-
-        return data;
-    }
-
-
 }

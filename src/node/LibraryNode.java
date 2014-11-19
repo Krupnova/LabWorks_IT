@@ -1,6 +1,5 @@
 package node;
 
-
 import java.io.Serializable;
 
 public class LibraryNode implements Serializable {

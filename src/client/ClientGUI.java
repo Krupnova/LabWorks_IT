@@ -52,7 +52,6 @@ public class ClientGUI extends Application {
     private final String[] TOOLS_LIST = {
             "Добавление",
             "Удаление",
-            "Обновить",
             "Найти"
     };
 
@@ -409,7 +408,7 @@ public class ClientGUI extends Application {
                         );
 
                         try {
-                            client.regAll();
+                            client.updateAll();
                             System.out.println("Added!");
                         } catch (RemoteException ex) {
                             ex.printStackTrace();
@@ -550,9 +549,6 @@ public class ClientGUI extends Application {
                         }
                     }
                 });
-
-                System.out.println("root: " + root.getChildren().toString());
-
             }
         });
 
@@ -606,91 +602,14 @@ public class ClientGUI extends Application {
                         }
 
                         try {
-                            client.regAll();
+                            client.updateAll();
                         } catch (RemoteException e) {
                             e.printStackTrace();
                         }
                     }
-
                 });
-
-                System.out.println("root: " + root.getChildren().toString());
             }
-
-
         });
-
-//print
-        /*Output.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                Rectangle rect = new Rectangle(500, 400);
-                rect.setLayoutX(0);
-                rect.setLayoutY(40);
-                rect.setFill(Color.RED);
-                rect.getStyleClass().add("my-rect");
-
-                root.getChildren().addAll(rect);
-
-                try {
-                    client.update();
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-                TableColumn numberCol = new TableColumn();
-                numberCol.setText("Номер");
-                numberCol.setMinWidth(104);
-                numberCol.setCellValueFactory(new PropertyValueFactory("number"));
-                TableColumn nameCol = new TableColumn();
-                nameCol.setText("Название");
-                nameCol.setMinWidth(104);
-                nameCol.setCellValueFactory(new PropertyValueFactory("name"));
-                TableColumn dateColl = new TableColumn();
-                dateColl.setText("Дата");
-                dateColl.setMinWidth(104);
-                dateColl.setCellValueFactory(new PropertyValueFactory("date"));
-                TableColumn authorCol = new TableColumn();
-                authorCol.setText("Автор");
-                authorCol.setMinWidth(104);
-                authorCol.setCellValueFactory(new PropertyValueFactory("author"));
-
-                final TableView tableView = new TableView();
-                tableView.setLayoutX(0);
-                tableView.setLayoutY(50);
-                tableView.setItems(client.data);
-
-                ScheduledExecutorService ses = Executors.newScheduledThreadPool(1);
-                Runnable pinger = new Runnable() {
-                    public void run() {
-                        try {
-                            client.update();
-                            tableView.setItems(client.print());
-                        } catch (RemoteException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                ses.scheduleAtFixedRate(pinger, 1, 1, TimeUnit.SECONDS);
-
-                tableView.getColumns().addAll(numberCol, nameCol, dateColl, authorCol);
-                root.getChildren().add(tableView);
-
-                System.out.println("root: " + root.getChildren().toString());
-            }
-        });*/
-
-//exit
-        /*Exit.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-
-                try {
-                    client.unregister(client);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("Exit!");
-                System.exit(0);
-            }
-        });*/
 
         // Возвращаем группу
         return root;
@@ -713,12 +632,10 @@ public class ClientGUI extends Application {
     // Метод для запуска GUI
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         // Инициализируем объект, который служит для связи с сервером.
         client = new ClientClass();
         // Пробуем присоединиться к серверу
-        client.lib();
-
+        client.connect();
         // Указываем титульник окна
         primaryStage.setTitle("Книги");
         // Запрещаем изменение размеров окна
@@ -728,12 +645,11 @@ public class ClientGUI extends Application {
         primaryStage.setMaxWidth(WINDOW_WIDTH + 5);
         primaryStage.setMinHeight(WINDOW_HEIGHT + 25);
         primaryStage.setMaxHeight(WINDOW_HEIGHT + 25);
-
+        // СОздаём список графических сцен
         layouts = new StackPane();
         layouts.getChildren().add(selectDatabase());
-
+        // Задаём сцену
         primaryStage.setScene(new Scene(layouts));
-
         // Показываем окно
         primaryStage.show();
     }
