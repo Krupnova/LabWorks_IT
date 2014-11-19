@@ -48,12 +48,18 @@ public class ClientGUI extends Application {
     // Константа, которая хранит отступ слева по-умолчанию для элементов сцены root
     private final double ROOT_STAGE_LEFT_SPACING = 50;
 
+    // Создаём буффер для созданных графических элементов
+    private LinkedList<Object> objectBuffer = new LinkedList<Object>();
+
     // Стандартные поля и значения
     private final String[] TOOLS_LIST = {
             "Добавление",
             "Удаление",
             "Найти"
     };
+
+    // Добавляем индексы кнопок, для использования
+    int addIndex = 0, deleteIndex = 1, findIndex = 2;
 
     private final String[] TABLE_FIELDS_NAMES = {
             "ID",
@@ -70,6 +76,8 @@ public class ClientGUI extends Application {
             "date",
             "author"
     };
+
+    // СОЗДАНИЕ ГРАФИЧЕСКИХ ЭЛЕМЕНТОВ СЦЕН
 
     // Метод для создания текстовых полей
     private Label createLabel (Group root, final double layoutX, final double layoutY, final String text) {
@@ -219,16 +227,7 @@ public class ClientGUI extends Application {
         return tools;
     }
 
-    // Создаём буффер для созданных графических элементов
-    private LinkedList<Object> objectBuffer = new LinkedList<Object>();
-
-    // Метод для очистки буфера
-    private void clearObjectBuffer(Group root) {
-        for (Object obj: objectBuffer) {
-            root.getChildren().remove(obj);
-        }
-        objectBuffer.clear();
-    }
+    // СОЗДАНИЕ ГРАФИЧЕСКИХ СЦЕН
 
     // Создаём группу объектов для выбора базы данных
     private Group selectDatabase () throws Exception {
@@ -302,7 +301,7 @@ public class ClientGUI extends Application {
                     client.setDatabase(
                             client,
                             databaseList.get(newComboBox.getSelectionModel().getSelectedIndex())
-                            );
+                    );
                     layouts.getChildren().remove(this);
                     clearObjectBuffer(newGroup);
                     client.update();
@@ -336,23 +335,12 @@ public class ClientGUI extends Application {
         return newGroup;
     }
 
-    // Строковый парсер, убирающий все ненужные символы, кроме названия базы данных
-    private String getDatabaseName(String source) {
-        return source.substring(source.lastIndexOf('/') + 1, source.lastIndexOf('.'));
-    }
-
     // Инициализируем графический интерфейс
     private Group initializeGUI() throws Exception {
         // Инициализируем базовую группу инструментов рабочего окна
         final Group root = new Group();
         // Инициализируем панель инструментов
         LinkedList<Button> tools = createToolbar(root, TOOLS_LIST);
-        // Добавляем индексы кнопок, для использования
-        int addIndex = 0, deleteIndex = 1, refreshIndex = 2, findIndex = 3;
-        // Обновляем базу данных
-        while(client.getData() == null) {
-            client.update();
-        }
         // Выводим базу данных
         final TableView mainDatabase = printDatabase(root, TABLE_FIELDS_NAMES, TABLE_FIELDS);
         // Разрешаем множественное выделение строк в базе данных
@@ -363,7 +351,6 @@ public class ClientGUI extends Application {
         toolsBackground.setLayoutY(TOOLS_HEIGHT);
         toolsBackground.setFill(Color.ANTIQUEWHITE);
         root.getChildren().add(toolsBackground);
-
         // Добавляем обработчик нажатия на кнопку добавления
         tools.get(addIndex).setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -392,11 +379,20 @@ public class ClientGUI extends Application {
                         ROOT_STAGE_LEFT_SPACING + DEFAULT_BUTTON_LEFT_SPACING,
                         TOOLS_HEIGHT + textFieldsName.length * (2 * DEFAULT_HEIGHT + DEFAULT_SPACING) + DEFAULT_SPACING,
                         -1,
-                        "OKAY"
+                        "Добавить"
                 );
                 // Обработчик нажания кнопки подтверждения
                 addConfirm.setOnAction(new EventHandler<ActionEvent>() {
                     public void handle(ActionEvent event) {
+                        // Проверка введённых данных
+                        for (int i = 0; i < addFields.size(); i++) {
+                            if (addFields.get(i).getText().isEmpty()) {
+                                return;
+                            } else if ((i % 2 == 0) && (!isValidLong(addFields.get(i).getText()))) {
+                                return;
+                            }
+                        }
+
                         client.AddBook(
                                 new LibraryNode(
                                         0,
@@ -409,9 +405,8 @@ public class ClientGUI extends Application {
 
                         try {
                             client.updateAll();
-                            System.out.println("Added!");
                         } catch (RemoteException ex) {
-                            ex.printStackTrace();
+                            System.err.println("Could not connect to the server");
                         }
                     }
                 });
@@ -472,11 +467,15 @@ public class ClientGUI extends Application {
                 // Если ищем по номеру
                 byNumber.setOnAction(new EventHandler<ActionEvent>() {
                     public void handle(ActionEvent event) {
+                        // Проверка данных
+                        if (!isValidLong(text.getText()))
+                            return;
+
                         LinkedList<LibraryNode> lib = new LinkedList<LibraryNode>();
                         try {
                             lib = client.Searching(text.getText(), SearchMode.BY_NUMBER);
                         } catch (RemoteException ex) {
-                            Logger.getLogger(ClientClass.class.getName()).log(Level.SEVERE, null, ex);
+                            System.err.println("Could not connect to the server");
                         }
 
                         System.out.println(lib);
@@ -496,7 +495,7 @@ public class ClientGUI extends Application {
                         try {
                             lib = client.Searching(text.getText(), SearchMode.BY_NAME);
                         } catch (RemoteException ex) {
-                            Logger.getLogger(ClientClass.class.getName()).log(Level.SEVERE, null, ex);
+                            System.err.println("Could not connect to the server");
                         }
 
                         System.out.println(lib);
@@ -512,11 +511,15 @@ public class ClientGUI extends Application {
                 // Если ищем по дате
                 byDate.setOnAction(new EventHandler<ActionEvent>() {
                     public void handle(ActionEvent event) {
+                        // Проверка данных
+                        if (!isValidLong(text.getText()))
+                            return;
+
                         LinkedList<LibraryNode> lib = new LinkedList<LibraryNode>();
                         try {
                             lib = client.Searching(text.getText(), SearchMode.BY_DATE);
                         } catch (RemoteException ex) {
-                            Logger.getLogger(ClientClass.class.getName()).log(Level.SEVERE, null, ex);
+                            System.err.println("Could not connect to the server");
                         }
 
                         System.out.println(lib);
@@ -536,7 +539,7 @@ public class ClientGUI extends Application {
                         try {
                             lib = client.Searching(text.getText(), SearchMode.BY_AUTHOR);
                         } catch (RemoteException ex) {
-                            Logger.getLogger(ClientClass.class.getName()).log(Level.SEVERE, null, ex);
+                            System.err.println("Could not connect to the server");
                         }
 
                         System.out.println(lib);
@@ -578,11 +581,21 @@ public class ClientGUI extends Application {
                 // Задаём действие на кнопку подтверждения удаления
                 deleteButton.setOnAction(new EventHandler<ActionEvent>() {
                     public void handle(ActionEvent event) {
-                        // Берём ID элемента
-                        int num = Integer.parseInt(id.getText());
+                        // Берём ID элемента с проверкой
+                        int removeIndex;
+                        // Проверка введённых данных
+                        try {
+                            removeIndex = Integer.parseInt(id.getText());
+                        } catch (NumberFormatException nfe) {
+                            return;
+                        }
+                        // Проверка границ диапазона
+                        if ((removeIndex < 0) || (removeIndex >= mainDatabase.getItems().size()))
+                            return;
+
                         // Удаляем
                         try {
-                            if (client.DelBook(num)) {
+                            if (client.DelBook(removeIndex)) {
                                 createLabel(
                                         root,
                                         ROOT_STAGE_LEFT_SPACING,
@@ -597,14 +610,10 @@ public class ClientGUI extends Application {
                                         ("Запись # " + id.getText() + " не была удалена.")
                                 );
                             }
-                        } catch (RemoteException ex) {
-                            Logger.getLogger(ClientClass.class.getName()).log(Level.SEVERE, null, ex);
-                        }
 
-                        try {
                             client.updateAll();
-                        } catch (RemoteException e) {
-                            e.printStackTrace();
+                        } catch (RemoteException ex) {
+                            System.err.println("Could not connect to the server");
                         }
                     }
                 });
@@ -615,6 +624,33 @@ public class ClientGUI extends Application {
         return root;
     }
 
+    // УТИЛИТЫ
+
+    // Метод для очистки буфера
+    private void clearObjectBuffer(Group root) {
+        for (Object obj: objectBuffer) {
+            root.getChildren().remove(obj);
+        }
+        objectBuffer.clear();
+    }
+
+    // Строковый парсер, убирающий все ненужные символы, кроме названия базы данных
+    private String getDatabaseName(String source) {
+        return source.substring(source.lastIndexOf('/') + 1, source.lastIndexOf('.'));
+    }
+
+    // Проверка валидности введенного числа
+    private boolean isValidLong (String source) {
+        try {
+            Long.parseLong(source);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
+
+    // ПЕРЕОПРЕДЕЛЁННЫЕ СТАНДАРТНЫЕ МЕТОДЫ
+
     // Метод обработки закрытия окна через крестик в углу
     @Override
     public void stop() {
@@ -622,7 +658,7 @@ public class ClientGUI extends Application {
             try {
                 client.unregister(client);
             } catch (RemoteException e) {
-                e.printStackTrace();
+                System.err.println("Could not connect to the server");
             }
         }
         System.out.println("Exit!");

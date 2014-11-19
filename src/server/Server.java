@@ -182,6 +182,7 @@ public class Server extends UnicastRemoteObject implements RMI_Interface {
         }
     }
 
+    // Получение базы данных
     @Override
     public String[] getDatabaseList() throws RemoteException {
         return this.DATABASES;
@@ -191,9 +192,9 @@ public class Server extends UnicastRemoteObject implements RMI_Interface {
         try {
             Registry reg = LocateRegistry.createRegistry(PORT);
             reg.rebind("server", new Server());
-            System.out.println("server started");
+            System.out.println("Server started");
         } catch (Exception e) {
-            System.out.println("Исключение: " + e);
+            System.err.println("Исключение: " + e);
         }
     }
 }
